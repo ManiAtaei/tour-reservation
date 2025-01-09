@@ -37,7 +37,8 @@ function Navbar() {
     ]
 
     return (
-        <nav className='flex flex-row-reverse items-center justify-between bg-[#f9f9f9] p-3  w-screen relative'>
+        <nav className='flex flex-row-reverse items-center justify-between bg-[#f9f9f9] p-3  w-screen 
+        fixed top-0 left-0 z-50'>
 
             {menu && (
                 <div className="fixed top-0 left-0 w-screen h-screen bg-black opacity-50 z-40"></div>
