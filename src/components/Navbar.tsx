@@ -124,10 +124,10 @@ function Navbar() {
                 </div>
 
                 <ul className='flex flex-col gap-4 '>
-                    <li><Link className='flex gap-4 items-center' href={"/#"}>تور های داخلی <img src="/nav-icon/Vector.svg" alt="" /></Link></li>
-                    <li><Link className='flex gap-4 items-center' href={"/#"}>تور های خارجی <img src="/nav-icon/tour-out.svg" alt="" /></Link></li>
-                    <li><Link className='flex gap-4 items-center' href={"/#"}>وب لاگ <img src="/public/nav-icon/weblog.svg" alt="" /></Link></li>
-                    <li><Link className='flex gap-4 items-center' href={"/#"}>درباره ما <img src="/public/nav-icon/mage_exclamation-circle.png" alt="" /></Link></li>
+                    <li><Link className='flex gap-4 items-center' href={"/#"}>تور های داخلی <img src="/nav-icon/1.svg" alt=" icon " /></Link></li>
+                    <li><Link className='flex gap-4 items-center' href={"/#"}>تور های خارجی <img src="/nav-icon/2.svg" alt=" icon " /></Link></li>
+                    <li><Link className='flex gap-4 items-center' href={"/#"}>وب لاگ <img src="/nav-icon/3.svg" alt=" icon " /></Link></li>
+                    <li><Link className='flex gap-4 items-center' href={"/#"}>درباره ما <img src="/nav-icon/4.svg" alt=" icon " /></Link></li>
                 </ul>
             </div>
         </nav>
