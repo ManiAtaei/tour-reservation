@@ -4,6 +4,11 @@ import { useForm } from "react-hook-form";
 import { FiMapPin, FiUser, FiCalendar } from "react-icons/fi";
 
 
+interface FormData {
+  name: string;
+  email: string;
+}
+
 function SearchTour() {
 
   const {
@@ -13,7 +18,7 @@ function SearchTour() {
   } = useForm();
 
 
-  const onSubmit = (data) => {
+  const onSubmit = (data : FormData) => {
     console.log("Form Data: ", data);
   };
 
