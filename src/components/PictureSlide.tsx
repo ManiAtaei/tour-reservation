@@ -19,7 +19,7 @@ function PictureSlide() {
 
     const handleClick = (id, image) => {
         if (id === selectedTour) return;
-        setIsAnimating(true); 
+        setIsAnimating(true);
         setTimeout(() => {
             setCurrentImage(image);
             setSelectedTour(id);
@@ -39,19 +39,20 @@ function PictureSlide() {
                 />
                 <SearchTour />
             </div>
-
-            <div className="flex items-center justify-between mt-4 overflow-x-auto gap-4 mx-auto xl:px-[200px]">
+        
+            <div className="flex items-center justify-between mt-4 overflow-x-auto gap-4 mx-auto xl:px-[200px] scrollbar-hide">
                 {tours.map((tour) => (
                     <label
-                        onClick={() => handleClick(tour.id, tour.image)} 
+                        onClick={() => handleClick(tour.id, tour.image)}
                         key={tour.id}
                         className={`cursor-pointer whitespace-nowrap px-4 py-2 transition text-xl 
-                            ${selectedTour === tour.id ? "text-orange-500 border-b-2 border-orange-500" : "text-gray-800"}`}
+                        ${selectedTour === tour.id ? "text-orange-500 border-b-2 border-orange-500" : "text-gray-800"}`}
                     >
                         {tour.title}
                     </label>
                 ))}
             </div>
+
         </div>
     );
 }

@@ -19,7 +19,7 @@ function SearchTour() {
 
 
   return (
-    <div className="flex flex-col justify-center gap-4 bg-[#fbfbfb]/70 p-8 rounded-lg shadow-md w-full max-w-7xl mx-auto absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 backdrop-blur-lg">
+    <div className="hidden 2xl:flex flex-col justify-center gap-4 bg-[#fbfbfb]/70 p-8 rounded-lg shadow-md w-full max-w-7xl mx-auto absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 backdrop-blur-lg">
 
       <div className="border-b-2 pb-4">
         تورهای سفارشی
@@ -29,7 +29,6 @@ function SearchTour() {
         onSubmit={handleSubmit(onSubmit)}
         className="flex items-center justify-between gap-4 w-full"
       >
-        {/* مبدا */}
         <div className="flex items-center bg-white px-4 py-2 rounded-lg shadow-sm w-full max-w-[200px]">
           <FiMapPin className="text-orange-500 mr-2" />
           <input
@@ -40,7 +39,6 @@ function SearchTour() {
           />
         </div>
 
-        {/* مقصد */}
         <div className="flex items-center bg-white px-4 py-2 rounded-lg shadow-sm w-full max-w-[200px]">
           <FiMapPin className="text-orange-500 mr-2" />
           <input
@@ -51,7 +49,6 @@ function SearchTour() {
           />
         </div>
 
-        {/* تاریخ رفت */}
         <div className="flex items-center bg-white px-4 py-2 rounded-lg shadow-sm w-full max-w-[150px]">
           <FiCalendar className="text-orange-500 mr-2" />
           <input
@@ -59,11 +56,11 @@ function SearchTour() {
               required: "لطفاً تاریخ رفت را وارد کنید",
             })}
             type="date"
+             
             className="w-full border-none outline-none text-gray-700"
           />
         </div>
 
-        {/* تاریخ برگشت */}
         <div className="flex items-center bg-white px-4 py-2 rounded-lg shadow-sm w-full max-w-[150px]">
           <FiCalendar className="text-orange-500 mr-2" />
           <input
@@ -73,7 +70,6 @@ function SearchTour() {
           />
         </div>
 
-        {/* تعداد مسافران */}
         <div className="flex items-center bg-white px-4 py-2 rounded-lg shadow-sm w-full max-w-[150px]">
           <FiUser className="text-orange-500 mr-2" />
           <input
@@ -85,7 +81,6 @@ function SearchTour() {
           />
         </div>
 
-        {/* دکمه جستجو */}
         <button
           type="submit"
           className="bg-[#5DAF6E] text-white py-2 px-20 rounded-lg shadow-lg hover:bg-green-600 transition"
