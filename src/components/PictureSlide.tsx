@@ -3,7 +3,13 @@ import React, { useState } from "react";
 import Image from "next/image";
 import SearchTour from "./SearchTour";
 
-const tours = [
+type Tour = {
+    id: number;
+    title: string;
+    image: string;
+};
+
+const tours: Tour[] = [
     { id: 1, title: "همه تور ها", image: "/slider-img/1.png" },
     { id: 2, title: "تور های زیارتی", image: "/slider-img/2.png" },
     { id: 3, title: "تور های طبیعت گردی", image: "/slider-img/3.png" },
@@ -13,11 +19,11 @@ const tours = [
 ];
 
 function PictureSlide() {
-    const [currentImage, setCurrentImage] = useState(tours[0].image);
-    const [selectedTour, setSelectedTour] = useState(tours[0].id);
-    const [isAnimating, setIsAnimating] = useState(false);
+    const [currentImage, setCurrentImage] = useState<string>(tours[0].image);
+    const [selectedTour, setSelectedTour] = useState<number>(tours[0].id);
+    const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
-    const handleClick = (id, image) => {
+    const handleClick = (id: number, image: string) => {
         if (id === selectedTour) return;
         setIsAnimating(true);
         setTimeout(() => {
@@ -39,7 +45,7 @@ function PictureSlide() {
                 />
                 <SearchTour />
             </div>
-        
+
             <div className="flex items-center justify-between mt-4 overflow-x-auto gap-4 mx-auto xl:px-[200px] scrollbar-hide">
                 {tours.map((tour) => (
                     <label
@@ -52,7 +58,6 @@ function PictureSlide() {
                     </label>
                 ))}
             </div>
-
         </div>
     );
 }
