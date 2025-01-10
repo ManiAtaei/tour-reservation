@@ -1,3 +1,4 @@
+'use client';
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -29,7 +30,8 @@ function TourCart() {
                     320 :{slidesPerView : 1},
                     640: { slidesPerView: 1 },
                     768: { slidesPerView: 2 },
-                    1024: { slidesPerView: 4 },
+                    1024: { slidesPerView: 3 },
+                    1280: { slidesPerView: 4 },
                 }}
             >
                 {tours.map((tour) => (
