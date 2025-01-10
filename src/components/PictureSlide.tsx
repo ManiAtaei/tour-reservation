@@ -2,6 +2,10 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import SearchTour from "./SearchTour";
+import Container from "./Container";
+import { AiOutlineRight } from "react-icons/ai";
+import TourCart from "./TourCart";
+
 
 type Tour = {
     id: number;
@@ -51,13 +55,18 @@ function PictureSlide() {
                     <label
                         onClick={() => handleClick(tour.id, tour.image)}
                         key={tour.id}
-                        className={`cursor-pointer whitespace-nowrap px-4 py-2 transition text-xl 
+                        className={`cursor-pointer whitespace-nowrap px-6 py-2 transition text-xl font-xmedium 
                         ${selectedTour === tour.id ? "text-orange-500 border-b-2 border-orange-500" : "text-gray-800"}`}
                     >
                         {tour.title}
                     </label>
                 ))}
             </div>
+
+            <Container>
+                <TourCart/>                   
+            </Container>
+
         </div>
     );
 }

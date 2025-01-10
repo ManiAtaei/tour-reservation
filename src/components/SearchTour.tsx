@@ -24,7 +24,7 @@ function SearchTour() {
 
   return (
     <div className="hidden 2xl:flex flex-col justify-center gap-4 bg-[#fbfbfb]/70 p-8 rounded-lg shadow-md w-full max-w-7xl mx-auto absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 backdrop-blur-lg">
-      <div className="border-b-2 pb-4">
+      <div className="border-b-2 pb-4 text-xl font-xmedium ">
         تورهای سفارشی
       </div>
 

@@ -2,3 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'x-black' ;
+    src: url('/fonts/IRANSansX-Black.ttf') format('truetype');
+    
+}
+
+@font-face {
+    font-family: "x-bold" ;
+    src: url('/fonts/IRANSansX-Bold.ttf') format('truetype');
+    
+}
+
+@font-face {
+    font-family: 'x-demibold' ;
+    src: url('/fonts/IRANSansX-DemiBold.ttf') format('truetype');
+    
+}
+
+@font-face {
+    font-family: 'x-extrabold' ;
+    src: url('/fonts/IRANSansX-ExtraBold.ttf') format('truetype');
+    
+}
+
+@font-face {
+    font-family: 'x-lightbold' ;
+    src: url('/fonts/IRANSansX-LightBold.ttf') format('truetype');
+    
+}
+
+
+@font-face {
+    font-family: 'x-light' ;
+    src: url('/fonts/IRANSansX-Light.ttf') format('truetype');
+    
+}
+
+
+@font-face {
+    font-family: 'x-medium' ;
+    src: url('/fonts/IRANSansX-Medium.ttf') format('truetype');
+    
+}
+
+
+@font-face {
+    font-family: 'x-regular' ;
+    src: url('/fonts/IRANSansX-Regular.ttf') format('truetype');
+    
+}
+
+
+@font-face {
+    font-family: 'x-thin' ;
+    src: url('/fonts/IRANSansX-Thin.ttf') format('truetype');
+    
+}
+
+@font-face {
+    font-family: 'x-ultralight' ;
+    src: url('/fonts/IRANSansX-UltraLight.ttf') format('truetype');
+    
+}

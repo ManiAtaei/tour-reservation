@@ -61,8 +61,8 @@ function Navbar() {
             </button>
 
             <div className='hidden md:block'>
-                <button className='btn bg-[#5DAF6E] w-[144px] text-white flex flex-row-reverse items-center gap-2'>
-                    <div>
+                <button className='btn bg-[#5DAF6E] w-[154px] text-white flex flex-row-reverse items-center gap-2'>
+                    <div className='text-base font-xregular' >
                         ورود / ثبت نام
 
                     </div>
@@ -82,7 +82,7 @@ function Navbar() {
                 <div className='hidden md:flex gap-4 p-2'>
                     <ul className='flex items-center justify-center gap-4'>
                         {navItem.map((item, index) => (
-                            <li key={index} className='p-2'>
+                            <li key={index} className='p-2 text-base font-xregular'>
                                 <Link href={item.url} className='flex flex-row-reverse gap-3 items-center'>
                                     {item.name}
                                     <img src={item.icon} className='w-6 h-6' alt="" />

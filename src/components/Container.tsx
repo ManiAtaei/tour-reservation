@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-function Container() {
-  return (
-    <div className='xl:px-[200px]'>
+function Container({ children }: { children: React.ReactNode }) {
+  return <div className="xl:px-[200px] px-4">
 
-    </div>
-  )
+    {children}
+
+  </div>;
 }
 
-export default Container
+export default Container;
