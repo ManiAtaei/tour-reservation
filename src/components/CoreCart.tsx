@@ -30,7 +30,7 @@ function CoreCart() {
                             شروع قیمت از <p className="text-[#4A90E2]">18.000.000</p> تومان
                         </p>
 
-                        <button className=" w-full 2xl:w-1/4 bg-[#5DAF6E] text-white rounded-lg py-2">
+                        <button className=" w-full 2xl:w-3/4 bg-[#5DAF6E] text-white rounded-lg py-2">
                             انتخاب تور
                         </button>
                     </div>
