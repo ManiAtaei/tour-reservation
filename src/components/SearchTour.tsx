@@ -1,31 +1,29 @@
 "use client";
 import React from "react";
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { FiMapPin, FiUser, FiCalendar } from "react-icons/fi";
 
-
 interface FormData {
-  name: string;
-  email: string;
+  origin: string;
+  destination: string;
+  departureDate: string;
+  returnDate: string;
+  passengers: number;
 }
 
 function SearchTour() {
-
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<FormData>(); 
 
-
-  const onSubmit = (data : FormData) => {
+  const onSubmit: SubmitHandler<FormData> = (data) => {
     console.log("Form Data: ", data);
   };
 
-
   return (
     <div className="hidden 2xl:flex flex-col justify-center gap-4 bg-[#fbfbfb]/70 p-8 rounded-lg shadow-md w-full max-w-7xl mx-auto absolute top-3/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 backdrop-blur-lg">
-
       <div className="border-b-2 pb-4">
         تورهای سفارشی
       </div>
@@ -42,6 +40,9 @@ function SearchTour() {
             placeholder="مبدا (شهر)"
             className="w-full border-none outline-none text-gray-700"
           />
+          {errors.origin && (
+            <span className="text-red-500 text-sm">{errors.origin.message}</span>
+          )}
         </div>
 
         <div className="flex items-center bg-white px-4 py-2 rounded-lg shadow-sm w-full max-w-[200px]">
@@ -52,6 +53,9 @@ function SearchTour() {
             placeholder="مقصد (شهر)"
             className="w-full border-none outline-none text-gray-700"
           />
+          {errors.destination && (
+            <span className="text-red-500 text-sm">{errors.destination.message}</span>
+          )}
         </div>
 
         <div className="flex items-center bg-white px-4 py-2 rounded-lg shadow-sm w-full max-w-[150px]">
@@ -61,9 +65,11 @@ function SearchTour() {
               required: "لطفاً تاریخ رفت را وارد کنید",
             })}
             type="date"
-             
             className="w-full border-none outline-none text-gray-700"
           />
+          {errors.departureDate && (
+            <span className="text-red-500 text-sm">{errors.departureDate.message}</span>
+          )}
         </div>
 
         <div className="flex items-center bg-white px-4 py-2 rounded-lg shadow-sm w-full max-w-[150px]">
@@ -84,6 +90,9 @@ function SearchTour() {
             min="1"
             className="w-full border-none outline-none text-gray-700"
           />
+          {errors.passengers && (
+            <span className="text-red-500 text-sm">{errors.passengers.message}</span>
+          )}
         </div>
 
         <button
@@ -93,10 +102,8 @@ function SearchTour() {
           جستجو
         </button>
       </form>
-
-
     </div>
   );
 }
 
-export default SearchTour
+export default SearchTour;
