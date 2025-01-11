@@ -2,6 +2,7 @@ import BestComent from "@/components/BestComent";
 import Container from "@/components/Container";
 import CoreCart from "@/components/CoreCart";
 import PictureSlide from "@/components/PictureSlide";
+import Questions from "@/components/Questions";
 import TourCart from "@/components/TourCart";
 
 export default function Home() {
@@ -39,6 +40,8 @@ export default function Home() {
           <TourCart />
 
           <BestComent/>
+
+          <Questions/>
 
         </Container>
 
