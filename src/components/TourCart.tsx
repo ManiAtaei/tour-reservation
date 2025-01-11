@@ -28,7 +28,8 @@ function TourCart() {
                 slidesPerView={3}
                 breakpoints={{
                     320 :{slidesPerView : 1},
-                    640: { slidesPerView: 1 },
+                    500: { slidesPerView: 2 },
+                    640: { slidesPerView: 2 },
                     768: { slidesPerView: 2 },
                     1024: { slidesPerView: 3 },
                     1280: { slidesPerView: 4 },
@@ -51,7 +52,7 @@ function TourCart() {
                                 </div>
                             </div>
                             <div className="flex items-center justify-between">
-                                <p>{tour.price} تومان</p>
+                                <p className="text-[14px] font-xregular">{tour.price} تومان</p>
                                 <button className="bg-[#5DAF6E] py-2 px-8 text-white rounded-lg">
                                     انتخاب تور
                                 </button>
