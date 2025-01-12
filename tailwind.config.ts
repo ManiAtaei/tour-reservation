@@ -15,6 +15,7 @@ export default {
 
       fontFamily : {
         
+        
         xblack : ["x-black" , "sans-serif"],
 
         xbold : ["x-bold" , "sans-serif"],
@@ -34,9 +35,6 @@ export default {
         xthin : ["x-thin" , "sans-serif"],
         
         xultralight : ["x-ultralight" , "sans-serif"],
-
-        
-
 
         
 

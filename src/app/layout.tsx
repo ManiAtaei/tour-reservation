@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "درنا",
-  description: "آژانس مسافرتی درنا ",
+  description: "تور مسافرتی درنا ",
 };
 
 export default function RootLayout({
@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en ">
       <head>
-        <link rel="icon"  href="/nav-icon/Fa.png"/>
+        <link rel="icon"  href="/nav-icon/fav.png"/>
       </head>
       <body dir="rtl">
         <Navbar />
