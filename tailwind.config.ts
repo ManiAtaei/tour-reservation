@@ -13,6 +13,12 @@ export default {
         foreground: "var(--foreground)",
       },
 
+      boxShadow: {
+        'custom-shadow': '4px 4px 15px rgba(0, 0, 0, 0.25)', // سایه دلخواه شما
+        'custom-soft': '2px 2px 8px rgba(0, 0, 0, 0.20)', // سایه ملایم
+
+      },
+
       fontFamily : {
         
         

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "درنا",
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body dir="rtl">
         <Navbar />
         {children}
+        <Footer/>
       </body>
     </html>
   );

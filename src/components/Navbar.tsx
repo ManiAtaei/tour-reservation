@@ -92,6 +92,7 @@ function Navbar() {
                     </ul>
                 </div>
 
+
             </div>
 
             <div className={` bg-white w-[320px] h-screen fixed top-0 right-0 z-50 absolute transition-all duration-300 ease-in-out p-8 border flex flex-col gap-8 ${menu ? 'translate-x-0' : 'translate-x-full'}`}>
@@ -112,8 +113,8 @@ function Navbar() {
                     </button>
 
                     <div>
-                        <img src="/logo-main.svg" alt="" />
                     </div>
+                    
 
                 </div>
 
