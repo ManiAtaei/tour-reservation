@@ -25,7 +25,7 @@ const namad = [
 function Footer() {
     return (
         <footer className=' max-w-full  2xl:px-[200px] bg-[#F9F9F9] mx-auto flex flex-col gap-4 shadow-custom-soft     '>
-            <div className="border-b pt-6">
+            <div className="border-b pt-6 p-4">
                 <div className='flex items-center justify-between'>
                     <div className='flex items-center gap-2'>
                         <div>
@@ -45,7 +45,7 @@ function Footer() {
                 </div>
             </div>
 
-            <div className='pr-4 flex gap-[272px]'>
+            <div className='pr-8 flex flex-col-reverse md:flex-row md:gap-[272px] '>
                 <div>
                     <ul>
                         <li className='text-[#5DAF6E] text-[18px] font-xbold border-b-2 border-orange-500 w-[30px]'>
@@ -90,7 +90,7 @@ function Footer() {
                 </div>
             </div>
 
-            <div className='border-t py-[30px] pr-4'>
+            <div className='border-t py-[30px] pr-8'>
                 <p className='text-[12px] font-xregular'>
                     کلیه حقوق این سرویس (وب‌سایت و اپلیکیشن‌های موبایل) محفوظ و متعلق به شرکت مسافرتی دورنا می‌باشد
                 </p>

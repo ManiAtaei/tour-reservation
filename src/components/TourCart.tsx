@@ -8,15 +8,15 @@ import { Navigation } from "swiper/modules";
 function TourCart() {
     const tours = [
         { id: 1, city: "توکیو", duration: "۵روز", date: "۱۲ تا ۱۷ بهمن ۱۴۰۳", price: "۲۳,۰۰۰,۰۰۰", hotel: "هتل کندو", img: "/cart-img/1.png" },
-        { id: 1, city: "توکیو", duration: "۵روز", date: "۱۲ تا ۱۷ بهمن ۱۴۰۳", price: "۲۳,۰۰۰,۰۰۰", hotel: "هتل کندو", img: "/cart-img/1.png" },
-        { id: 1, city: "توکیو", duration: "۵روز", date: "۱۲ تا ۱۷ بهمن ۱۴۰۳", price: "۲۳,۰۰۰,۰۰۰", hotel: "هتل کندو", img: "/cart-img/1.png" },
-        { id: 1, city: "توکیو", duration: "۵روز", date: "۱۲ تا ۱۷ بهمن ۱۴۰۳", price: "۲۳,۰۰۰,۰۰۰", hotel: "هتل کندو", img: "/cart-img/1.png" },
-        { id: 1, city: "توکیو", duration: "۵روز", date: "۱۲ تا ۱۷ بهمن ۱۴۰۳", price: "۲۳,۰۰۰,۰۰۰", hotel: "هتل کندو", img: "/cart-img/1.png" },
-        { id: 1, city: "توکیو", duration: "۵روز", date: "۱۲ تا ۱۷ بهمن ۱۴۰۳", price: "۲۳,۰۰۰,۰۰۰", hotel: "هتل کندو", img: "/cart-img/1.png" },
+        { id: 2, city: "توکیو", duration: "۵روز", date: "۱۲ تا ۱۷ بهمن ۱۴۰۳", price: "۲۳,۰۰۰,۰۰۰", hotel: "هتل کندو", img: "/cart-img/1.png" },
+        { id: 3, city: "توکیو", duration: "۵روز", date: "۱۲ تا ۱۷ بهمن ۱۴۰۳", price: "۲۳,۰۰۰,۰۰۰", hotel: "هتل کندو", img: "/cart-img/1.png" },
+        { id: 4, city: "توکیو", duration: "۵روز", date: "۱۲ تا ۱۷ بهمن ۱۴۰۳", price: "۲۳,۰۰۰,۰۰۰", hotel: "هتل کندو", img: "/cart-img/1.png" },
+        { id: 5, city: "توکیو", duration: "۵روز", date: "۱۲ تا ۱۷ بهمن ۱۴۰۳", price: "۲۳,۰۰۰,۰۰۰", hotel: "هتل کندو", img: "/cart-img/1.png" },
+        { id: 6, city: "توکیو", duration: "۵روز", date: "۱۲ تا ۱۷ بهمن ۱۴۰۳", price: "۲۳,۰۰۰,۰۰۰", hotel: "هتل کندو", img: "/cart-img/1.png" },
        
     ];
 
-    return (
+    return (    
         <div className="mt-8 pb-4">
             <div className="font-xregular text-base text-[#4A90E2] mb-4 text-left">
                 <p>مشاهده همه تور ها</p>
@@ -38,21 +38,23 @@ function TourCart() {
                 {tours.map((tour) => (
                     <SwiperSlide key={tour.id}>
                         <div className="p-[14px] bg-white border rounded-lg flex flex-col gap-2 w-full">
-                            <img src={tour.img} className="w-full" alt={tour.city} />
+                            <img src={tour.img} className="w-full h-[190px]" alt={tour.city} />
                             <div className="p-4 flex items-center justify-between">
                                 <div className="flex flex-col gap-2">
                                     <div className="flex gap-2 items-center">
-                                        <p className="text-lg font-xregular">{tour.city}</p>
-                                        <p className="text-[10px] font-xregular">({tour.duration})</p>
+                                        <p className="text-lg font-xmedium">{tour.city}</p>
+                                        <p className="text-[12px] font-xregular text-[#757575]">({tour.duration})</p>
                                     </div>
-                                    <div className="text-[10px] font-xregular">{tour.date}</div>
+                                    <div className="text-[12px] text-[#757575] font-xregular">{tour.date}</div>
                                 </div>
-                                <div>
+                                <div className="flex flex-col items-end">
                                     <p className="text-base font-xregular">{tour.hotel}</p>
+                                    <p>⭐⭐⭐⭐⭐</p>
                                 </div>
                             </div>
+                            <br />
                             <div className="flex items-center justify-between">
-                                <p className="text-[14px] font-xregular">{tour.price} تومان</p>
+                                <p className="text-[16px] font-xdemibold">{tour.price} تومان</p>
                                 <button className="bg-[#5DAF6E] py-2 px-8 text-white rounded-lg">
                                     انتخاب تور
                                 </button>
