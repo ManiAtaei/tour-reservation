@@ -4,6 +4,7 @@ import Container from '@/components/Container';
 import History from "./components-about/History";
 import Activity from "./components-about/Activity";
 import Value from "./components-about/Value";
+import Contactus from "./components-about/Contactus";
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState("tab1");
@@ -50,9 +51,9 @@ export default function Page() {
 
         <div className="">
           {activeTab === "tab1" && <div> <History /> </div>}
-          {activeTab === "tab2" && <div><Activity /> </div>}
+          {activeTab === "tab2" && <div> <Activity /> </div>}
           {activeTab === "tab3" && <div> <Value /> </div>}
-          {/* {activeTab === "tab4" && <div>محتوای دکمه 4</div>} */}
+          {activeTab === "tab4" && <div> <Contactus /> </div>}
         </div>
       </div>
     </Container>
