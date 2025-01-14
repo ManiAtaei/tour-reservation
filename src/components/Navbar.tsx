@@ -23,7 +23,7 @@ function Navbar() {
         },
         {
             name: 'وب لاگ',
-            url: '/#',
+            url: '/blogs',
             icon: '/nav-icon/3.svg'
         },
         {

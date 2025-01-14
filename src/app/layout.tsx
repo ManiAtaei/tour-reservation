@@ -18,7 +18,7 @@ export default function RootLayout({
       <head>
         <link rel="icon"  href="/nav-icon/fav.png"/>
       </head>
-      <body dir="rtl">
+      <body dir="rtl" >
         <Navbar />
         {children}
         <Footer/>
