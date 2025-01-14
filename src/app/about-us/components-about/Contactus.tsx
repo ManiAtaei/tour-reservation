@@ -5,7 +5,7 @@ import Support from './Support';
 function Contactus() {
     const [activeTab, setActiveTab] = useState('mainOffice');
 
-    const tabClasses = (tab) =>
+    const tabClasses = (tab : string) =>
         `w-1/2 text-center text-xl font-xbold border-b py-[18px] cursor-pointer ${activeTab === tab ? 'text-orange-500 border-orange-500' : 'text-black border-gray-300'
         }`;
 
