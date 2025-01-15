@@ -1,4 +1,4 @@
-'use client';
+'use client' 
 import React, { useState } from 'react';
 import Link from 'next/link';
 
@@ -50,7 +50,7 @@ function Navbarblog() {
             </div>
 
             <div className='flex items-center gap-7'>
-                <Link href={'/'}>
+                <Link href={"/"}>
                     <img src="/nav-icon/nav-logo.svg" alt="logo" />
                 </Link>
 

@@ -3,6 +3,7 @@ import "../../app/globals.css";
 import Footer from "@/components/Footer";
 import Navbarblog from "./component/Navbarblog";
 
+
 export const metadata: Metadata = {
   title: "درنا",
   description: "تور مسافرتی درنا ",
@@ -13,6 +14,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
   return (
     <html lang="fa">
       <head>
@@ -22,7 +25,9 @@ export default function RootLayout({
       </head>
       <body dir="rtl">
         <Navbarblog />
-        {children}
+        <main>
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
