@@ -14,10 +14,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="icon" href="/nav-icon/fav.png" />
-      </head>
+    <html lang="fa">
+      
       <body dir="rtl">
         <Navbar />
         {children}
@@ -26,3 +24,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+
