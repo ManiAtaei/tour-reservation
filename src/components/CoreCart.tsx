@@ -26,9 +26,16 @@ function CoreCart() {
                     </div>
 
                     <div className='flex flex-col gap-8'>
-                        <p className="font-xregular text-[16px] flex items-center">
-                            شروع قیمت از <p className="text-[#4A90E2]">18.000.000</p> تومان
-                        </p>
+
+                        <div className='flex gap-2'>
+                            <p className="font-xregular text-[16px] flex items-center">
+                                شروع قیمت از
+                            </p>
+
+                            <p className="text-[#4A90E2] font-xregular">180.000.000</p>
+
+                            <p className='font-xregular text-[16px] flex items-center'>تومان</p>
+                        </div>
 
                         <button className=" w-full 2xl:w-3/4 bg-[#5DAF6E] text-white rounded-lg py-2">
                             انتخاب تور

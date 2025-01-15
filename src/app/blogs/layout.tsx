@@ -14,14 +14,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en ">
+    <html lang="fa">
       <head>
-        <link rel="icon"  href="/nav-icon/fav.png"/>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="/nav-icon/fav.png" />
       </head>
-      <body dir="rtl" >
-        <Navbarblog/>
+      <body dir="rtl">
+        <Navbarblog />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );

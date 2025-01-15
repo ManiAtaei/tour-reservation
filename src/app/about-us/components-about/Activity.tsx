@@ -26,7 +26,6 @@ function Activity() {
                     <div>
                         <ol className='list-decimal mt-3 text-[#424242] text-[18px] font-xmedium pr-4' >
                             <li>امکان مقایسه اسان تور ها
-                                <p></p>
                             </li>
                             <li>تنوع بالا در انتخاب تور</li>
                             <li>فراهم کردن بهترین امکانات برای مسافران</li>

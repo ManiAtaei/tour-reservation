@@ -5,7 +5,7 @@ import Bigbaner from '@/components/Bigbaner'
 
 function page() {
     return (
-        <div className='w-full mt-[6.5rem] bg-[#bg-white] mb-[83px] '>
+        <div className='w-full mt-[6.5rem] bg-white mb-[83px] '>
             <div className='flex flex-col md:flex-row md:gap-[14px] mx-auto items-center justify-center '>
                 <div>
                     <img src="/blog-main/efel.svg" alt="" />

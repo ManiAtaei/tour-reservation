@@ -1,9 +1,8 @@
-"use client";
+'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
 
 function Navbarblog() {
-
     const [menu, setMenu] = useState(false);
 
     const menuhandler = () => {
@@ -11,22 +10,9 @@ function Navbarblog() {
     };
 
     const navItem = [
-        {
-            name: 'خانه',
-            url: '/blogs',
-            icon: '/nav-icon/1.svg'
-        },
-        {
-            name: 'ایران گردی',
-            url: '/blogs',
-            icon: '/nav-icon/2.svg'
-        },
-        {
-            name: 'جهان گردی',
-            url: '/blogs',
-            icon: '/nav-icon/3.svg'
-        },
-      
+        { name: 'خانه', url: '/blogs', icon: '/nav-icon/1.svg' },
+        { name: 'ایران گردی', url: '/blogs', icon: '/nav-icon/2.svg' },
+        { name: 'جهان گردی', url: '/blogs', icon: '/nav-icon/3.svg' },
     ];
 
     return (
@@ -37,6 +23,7 @@ function Navbarblog() {
 
             <button
                 onClick={menuhandler}
+                aria-label={menu ? "بستن منو" : "باز کردن منو"}
                 className='btn btn-square bg-zinc-300 z-50 md:hidden'>
                 {menu ? (
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">

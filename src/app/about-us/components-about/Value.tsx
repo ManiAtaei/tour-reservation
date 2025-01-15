@@ -11,7 +11,6 @@ function Value() {
                 <div className='border-b border-[#E5E5E5]'>
                     <p className='text-[20px] font-xbold pb-2'>
                         ارزش درنا
-
                     </p>
                 </div>
 
@@ -22,16 +21,12 @@ function Value() {
                 </div>
 
                 <div className='mt-2'>
-
-
                     <div>
-                        <ol className='list-decimal mt-3 text-[#424242] text-[18px] font-xmedium pr-4' >
-                            <li>امکان مقایسه اسان تور ها
-                                <p></p>
-                            </li>
+                        <ol className='list-decimal mt-3 text-[#424242] text-[18px] font-xmedium pr-4'>
+                            <li>امکان مقایسه آسان تور ها</li>
                             <li>تنوع بالا در انتخاب تور</li>
                             <li>فراهم کردن بهترین امکانات برای مسافران</li>
-                            <li> ایجاد فضای امن برای کاربران و ارائه خدمات معتبر</li>
+                            <li>ایجاد فضای امن برای کاربران و ارائه خدمات معتبر</li>
                             <li>معرفی مکان‌های دیدنی، راهنماهای سفر و اطلاعات فرهنگی</li>
                         </ol>
                     </div>
