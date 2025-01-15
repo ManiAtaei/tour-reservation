@@ -26,7 +26,7 @@ function Footer() {
     return (
         <footer className=' max-w-full  2xl:px-[200px] bg-[#F9F9F9] mx-auto flex flex-col gap-4 shadow-custom-soft     '>
             <div className="border-b pt-6 p-4">
-                <div className='flex items-center justify-between'>
+                <div className='flex flex-col gap-4 md:flex-row items-center justify-between'>
                     <div className='flex items-center gap-2'>
                         <div>
                             <img src="/d3.png" alt="" />

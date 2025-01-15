@@ -55,7 +55,7 @@ function TourCart() {
                             <br />
                             <div className="flex items-center justify-between">
                                 <p className="text-[16px] font-xdemibold">{tour.price} تومان</p>
-                                <button className="bg-[#5DAF6E] py-2 px-8 text-white rounded-lg">
+                                <button className="bg-[#5DAF6E] py-2 px-8 text-white rounded-lg btn">
                                     انتخاب تور
                                 </button>
                             </div>

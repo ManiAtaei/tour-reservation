@@ -37,7 +37,7 @@ function CoreCart() {
                             <p className='font-xregular text-[16px] flex items-center'>تومان</p>
                         </div>
 
-                        <button className=" w-full 2xl:w-3/4 bg-[#5DAF6E] text-white rounded-lg py-2">
+                        <button className=" btn w-full 2xl:w-3/4 bg-[#5DAF6E] text-white rounded-lg py-2">
                             انتخاب تور
                         </button>
                     </div>
