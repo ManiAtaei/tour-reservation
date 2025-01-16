@@ -11,7 +11,7 @@ function Navbarblog() {
 
     const navItem = [
         { name: 'خانه', url: '/blogs', icon: '/nav-icon/1.svg' },
-        { name: 'ایران گردی', url: '/blogs', icon: '/nav-icon/2.svg' },
+        { name: 'ایران گردی', url: '/blogs/iran-tour', icon: '/nav-icon/2.svg' },
         { name: 'جهان گردی', url: '/blogs', icon: '/nav-icon/3.svg' },
     ];
 
