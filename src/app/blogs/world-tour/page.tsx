@@ -171,13 +171,13 @@ function page() {
                             </div>
                         </div>
 
-                        <div className='w-[160  px] h-[995px] px-4 pt-5 text-nowrap flex itce items-center flex-col shadow-custom-soft rounded-xl'>
+                        <div className='w-[140px] h-[995px] px-4 pt-5 text-nowrap flex itce items-center flex-col shadow-custom-soft rounded-xl'>
                             <div>
                                 <p className='text-xl font-xbold'>شهر های جهان</p>
                             </div>
                             <ul className='flex flex-col gap-6 mt-6'>
                                 {citys.map((city) => (
-                                    <li className='flex gap-1 text-lg font-xmedium ' key={city.id} > <img src="/blog-main/iran-tour/icon-city.svg" alt="city" /> {city.cname}</li>
+                                    <li className='flex gap-1 ' key={city.id} > <img src="/blog-main/iran-tour/icon-city.svg" alt="city" /> {city.cname}</li>
                                 ))}
                             </ul>
                         </div>
