@@ -30,8 +30,12 @@ function Navbar() {
     return (
         <nav className="flex flex-row-reverse items-center justify-between bg-[#f9f9f9] px-6 py-[7px] w-full fixed top-0 left-0 z-50 shadow-custom-soft">
             {menu && (
-                <div className="fixed top-0 left-0 w-screen h-screen bg-black opacity-50 z-40"></div>
+                <div
+                    onClick={menuhandler} 
+                    className="fixed top-0 left-0 w-screen h-screen bg-black opacity-50 z-40"
+                ></div>
             )}
+
             <button
                 onClick={menuhandler}
                 className="btn btn-square bg-zinc-300 z-50 md:hidden"
