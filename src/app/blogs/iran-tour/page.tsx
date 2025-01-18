@@ -43,12 +43,13 @@ function page() {
                     </div>
 
                     <div className='flex mt-[60px] justify-between'>
-                        <div className='w-[80%] flex flex-col gap-9'>
+                        <div className='w-full lg:w-[80%] flex flex-col gap-9'>
+
                             <div className='w-full flex gap-9' >
 
 
 
-                                <div className='w-1/2 flex flex-col  justify-center'>
+                                <div className='w-full flex flex-col  justify-center'>
                                     <div className='w-full'>
                                         <img className='w-full' src="/blog-main/iran-tour/1.png" alt="" />
                                     </div>
@@ -59,7 +60,7 @@ function page() {
                                     </div>
                                 </div>
 
-                                <div className='w-1/2 flex flex-col  justify-center'>
+                                <div className='w-full flex-col  justify-center hidden md:flex '>
                                     <div className='w-full'>
                                         <img className='w-full' src="/blog-main/iran-tour/1.png" alt="" />
                                     </div>
@@ -79,7 +80,7 @@ function page() {
 
 
 
-                                <div className='w-1/2 flex flex-col  justify-center'>
+                                <div className='w-full flex flex-col  justify-center'>
                                     <div className='w-full'>
                                         <img className='w-full' src="/blog-main/iran-tour/1.png" alt="" />
                                     </div>
@@ -90,7 +91,7 @@ function page() {
                                     </div>
                                 </div>
 
-                                <div className='w-1/2 flex flex-col  justify-center'>
+                                <div className='w-full flex-col  justify-center hidden md:flex '>
                                     <div className='w-full'>
                                         <img className='w-full' src="/blog-main/iran-tour/1.png" alt="" />
                                     </div>
@@ -110,7 +111,7 @@ function page() {
 
 
 
-                                <div className='w-1/2 flex flex-col  justify-center'>
+                                <div className='w-full flex flex-col  justify-center'>
                                     <div className='w-full'>
                                         <img className='w-full' src="/blog-main/iran-tour/1.png" alt="" />
                                     </div>
@@ -121,7 +122,7 @@ function page() {
                                     </div>
                                 </div>
 
-                                <div className='w-1/2 flex flex-col  justify-center'>
+                                <div className='w-full flex-col  justify-center hidden md:flex '>
                                     <div className='w-full'>
                                         <img className='w-full' src="/blog-main/iran-tour/1.png" alt="" />
                                     </div>
@@ -143,7 +144,7 @@ function page() {
 
 
 
-                                <div className='w-1/2 flex flex-col  justify-center'>
+                                <div className='w-full flex flex-col  justify-center'>
                                     <div className='w-full'>
                                         <img className='w-full' src="/blog-main/iran-tour/1.png" alt="" />
                                     </div>
@@ -154,7 +155,7 @@ function page() {
                                     </div>
                                 </div>
 
-                                <div className='w-1/2 flex flex-col  justify-center'>
+                                <div className='w-full flex-col  justify-center hidden md:flex '>
                                     <div className='w-full'>
                                         <img className='w-full' src="/blog-main/iran-tour/1.png" alt="" />
                                     </div>
@@ -169,9 +170,10 @@ function page() {
 
 
                             </div>
+
                         </div>
 
-                        <div className='w-[160px] h-[995px] px-4 pt-5 text-nowrap flex itce items-center flex-col shadow-custom-soft rounded-xl sticky top-32'>
+                        <div className='w-[160px] h-[995px] px-4 pt-5 text-nowrap lg:flex itce items-center flex-col shadow-custom-soft rounded-xl sticky top-32 hidden'>
                             <div>
                                 <p className='text-xl font-xbold'>شهر های جهان</p>
                             </div>

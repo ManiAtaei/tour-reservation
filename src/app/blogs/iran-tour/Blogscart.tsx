@@ -25,17 +25,17 @@ function TourCart() {
                 spaceBetween={10}
                 slidesPerView={3}
                 breakpoints={{
-                    320 :{slidesPerView : 1},
-                    500: { slidesPerView: 1 },
-                    640: { slidesPerView: 2 },
-                    768: { slidesPerView: 2 },
+                    320 :{slidesPerView : 1.5},
+                    500: { slidesPerView: 1.5 },
+                    640: { slidesPerView: 2.5 },
+                    768: { slidesPerView: 2.5 },
                     1024: { slidesPerView: 2.5 },
                 }}
             >
                 {tours.map((tour) => (
                     <SwiperSlide key={tour.id}>
                        <div>
-                        <img className="w-full" src="/blog-main/iran-tour/مسجد.svg" alt="" />
+                        <img className="w-full " src="/blog-main/iran-tour/مسجد.svg" alt="" />
                        </div>
                     </SwiperSlide>
                 ))}

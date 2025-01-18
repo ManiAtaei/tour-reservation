@@ -8,77 +8,81 @@ function Questions() {
                 <img className='mx-auto scale-125' src="/q.png" alt="" />
             </div>
 
-            <div className='flex flex-col gap-2 w-full '>
+            <div className='flex flex-col gap-4 w-full '>
 
                 <div className='font-xbold text-2xl mb-6'>
-                    سوالات متداول
+                    آیا می‌توانم تور داخلی را تغییر یا لغو کنم؟
+
                 </div>
 
-                <div className="collapse collapse-arrow bg-base-200 bg-white">
+                <div className="collapse collapse-arrow bg-base-200 bg-white shadow-custom-soft">
                     <input type="radio" name="my-accordion-2" defaultChecked />
-                    <div className="collapse-title text-base font-medium border-b flex items-center gap-4 ">
+                    <div className="collapse-title text-base font-medium  flex items-center gap-4 ">
                         <div>
                             <img src="/nav-icon/soal.png" alt="" />
                         </div>
 
                         <div>
-                            چه مدارکی برای ثبت‌نام در تورهای داخلی نیاز است؟
+                            برای ثبت‌نام در تورهای داخلی، شما نیاز به کارت شناسایی معتبر (کارت ملی یا شناسنامه) .
                         </div>
                     </div>
                     <div className="collapse-content">
-                        <p>hello</p>
+                        <p>برای ثبت‌نام در تورهای داخلی، شما نیاز به کارت شناسایی معتبر (کارت ملی یا شناسنامه) .</p>
                     </div>
                 </div>
 
-                <div className="collapse collapse-arrow bg-base-200 bg-white">
+                <div className="collapse collapse-arrow bg-base-200 bg-white shadow-custom-soft">
                     <input type="radio" name="my-accordion-2" defaultChecked />
-                    <div className="collapse-title text-base font-medium border-b flex items-center gap-4 ">
+                    <div className="collapse-title text-base font-medium  flex items-center gap-4 ">
                         <div>
                             <img src="/nav-icon/soal.png" alt="" />
                         </div>
 
                         <div>
-                            چه مدارکی برای ثبت‌نام در تورهای داخلی نیاز است؟
+                            آیا می‌توانم تور داخلی را تغییر یا لغو کنم؟
                         </div>
                     </div>
                     <div className="collapse-content">
-                        <p>hello</p>
+                        <p>بله، در صورتی که تور هنوز آغاز نشده باشد، شما می‌توانید رزرو خود را تغییر یا لغو کنید .</p>
                     </div>
                 </div>
 
-
-                <div className="collapse collapse-arrow bg-base-200 bg-white">
+                <div className="collapse collapse-arrow bg-base-200 bg-white shadow-custom-soft">
                     <input type="radio" name="my-accordion-2" defaultChecked />
-                    <div className="collapse-title text-base font-medium border-b flex items-center gap-4 ">
+                    <div className="collapse-title text-base font-medium  flex items-center gap-4 ">
                         <div>
                             <img src="/nav-icon/soal.png" alt="" />
                         </div>
 
                         <div>
-                            چه مدارکی برای ثبت‌نام در تورهای داخلی نیاز است؟
+                            هزینه تورهای داخلی شامل چه مواردی می‌شود؟
                         </div>
                     </div>
                     <div className="collapse-content">
-                        <p>hello</p>
+                        <p>
+                            هزینه‌های تورهای داخلی معمولاً شامل حمل‌ونقل، اقامت، غذا (در صورتی که ذکر شده باشد)
+                        </p>
                     </div>
                 </div>
 
-
-                <div className="collapse collapse-arrow bg-base-200 bg-white">
+                <div className="collapse collapse-arrow bg-base-200 bg-white shadow-custom-soft">
                     <input type="radio" name="my-accordion-2" defaultChecked />
-                    <div className="collapse-title text-base font-medium border-b flex items-center gap-4 ">
+                    <div className="collapse-title text-base font-medium  flex items-center gap-4 ">
                         <div>
                             <img src="/nav-icon/soal.png" alt="" />
                         </div>
 
                         <div>
-                            چه مدارکی برای ثبت‌نام در تورهای داخلی نیاز است؟
+                            چه مدارکی برای ثبت‌نام در تورهای خارجی نیاز است؟
                         </div>
                     </div>
                     <div className="collapse-content">
-                        <p>hello</p>
+                        <p>برای ثبت‌نام در تورهای داخلی، شما نیاز به کارت شناسایی معتبر (کارت ملی یا شناسنامه) .</p>
                     </div>
                 </div>
+
+
+
 
             </div>
 
