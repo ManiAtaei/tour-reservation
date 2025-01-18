@@ -27,7 +27,7 @@ function page() {
             </div>
 
 
-            <div className=' 2xl:px-[250px] mt-9' >
+            <div className=' px-4 2xl:px-[250px] mt-9' >
                 <div className=''>
                     <div>
                         <p className='text-base xl:text-6 font-xbold'>

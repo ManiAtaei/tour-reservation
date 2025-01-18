@@ -171,7 +171,7 @@ function page() {
                             </div>
                         </div>
 
-                        <div className='w-[160  px] h-[995px] px-4 pt-5 text-nowrap flex itce items-center flex-col shadow-custom-soft rounded-xl'>
+                        <div className='w-[160px] h-[995px] px-4 pt-5 text-nowrap flex itce items-center flex-col shadow-custom-soft rounded-xl sticky top-32'>
                             <div>
                                 <p className='text-xl font-xbold'>شهر های جهان</p>
                             </div>

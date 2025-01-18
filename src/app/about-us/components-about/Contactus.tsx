@@ -23,7 +23,7 @@ function Contactus() {
 
     return (
         <div>
-            <div className="w-[904px] bg-white flex flex-col">
+            <div className="w-full lg:w-[800px] bg-white flex flex-col">
                 <div className="flex w-full items-center justify-between">
                     <div
                         className={tabClasses('mainOffice')}

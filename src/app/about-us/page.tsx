@@ -15,11 +15,12 @@ export default function Page() {
 
   return (
     <Container>
-      <div className='mt-[6.2rem] flex py-8 bg-[#F9F9F9] gap-[25px]'>
-        <div className=" flex flex-col w-[286px] h-[252px] bg-white divide-y-2 rounded-lg">
+      <div className='mt-[6.2rem] flex flex-col lg:flex-row py-8 bg-[#F9F9F9] gap-[25px]'>
+        <div className="  flex-row bg-white divide-y-2 rounded-lg flex  gap-4 overflow-x-auto max-w-[900px]
+        lg:flex-col lg:w-[400px] lg:h-[270px] lg:gap-0  ">
           <button
-            className={` transition-colors duration-300 ease-in-out
- flex items-start py-[18.5px] pr-6 text-[18px] font-xbold ${activeTab === "tab1" ? "text-[#5DAF6E]" : "text-black"}`}
+            className={` transition-colors duration-300 ease-in-out 
+ flex  py-[18.5px]  text-[18px] pr-6 font-xbold ${activeTab === "tab1" ? "text-[#5DAF6E]" : "text-black"}`}
             onClick={() => handleClick("tab1")}
           >
             تاریخچه درنا
@@ -55,9 +56,9 @@ export default function Page() {
 
         <div className="">
           {activeTab === "tab1" && <div className="transition-all duration-300"> <History /> </div>}
-          {activeTab === "tab2" && <div className="transition-all duration-300"> <Activity /> </div>}
-          {activeTab === "tab3" && <div className="transition-all duration-300"> <Value /> </div>}
-          {activeTab === "tab4" && <div className="transition-all duration-300"> <Contactus /> </div>}
+          {activeTab === "tab2" && <div className="transition-all duration-300"> <History /> </div>}
+          {activeTab === "tab3" && <div className="transition-all duration-300"> <History /> </div>}
+          {activeTab === "tab4" && <div className="transition-all duration-300"> <History /> </div>}
         </div>
       </div>
     </Container>

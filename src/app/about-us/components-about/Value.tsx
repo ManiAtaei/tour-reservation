@@ -2,7 +2,7 @@ import React from 'react'
 
 function Value() {
     return (
-        <div className='w-[904px]'>
+        <div className='w-full lg:w-[800px]'>
             <div>
                 <img src="/about-us/3.svg" alt="img" />
             </div>

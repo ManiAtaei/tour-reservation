@@ -2,9 +2,9 @@ import React from 'react'
 
 function Activity() {
     return (
-        <div className='w-[904px]'>
-            <div>
-                <img src="/about-us/2.svg" alt="img" />
+        <div className='w-full'>
+            <div className='w-full'>
+                <img className='w-full' src="/about-us/2.svg" alt="img" />
             </div>
 
             <div className='mt-3 bg-white py-6 px-8'>
