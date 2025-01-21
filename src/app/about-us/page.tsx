@@ -56,8 +56,8 @@ export default function Page() {
 
         <div className="">
           {activeTab === "tab1" && <div className="transition-all duration-300"> <History /> </div>}
-          {activeTab === "tab2" && <div className="transition-all duration-300"> <History /> </div>}
-          {activeTab === "tab3" && <div className="transition-all duration-300"> <History /> </div>}
+          {activeTab === "tab2" && <div className="transition-all duration-300"> <Activity/> </div>}
+          {activeTab === "tab3" && <div className="transition-all duration-300"> <Value/> </div>}
           {activeTab === "tab4" && <div className="transition-all duration-300"> <History /> </div>}
         </div>
       </div>

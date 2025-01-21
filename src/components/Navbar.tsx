@@ -2,40 +2,44 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import LoginModal from "@/components/login-modal/LoginModal";
 
 function Navbar() {
     const [menu, setMenu] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const pathname = usePathname();
 
     const menuhandler = () => setMenu(!menu);
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
 
     useEffect(() => {
         setMenu(false);
     }, [pathname]);
 
-    const navItem =
-        pathname.includes("/blogs")
-            ? [
-                { name: "خانه", url: "/blogs", icon: "/nav-icon/1.svg" },
-                { name: "ایران گردی", url: "/blogs/iran-tour", icon: "/nav-icon/2.svg" },
-                { name: "جهان گردی", url: "/blogs/iran-tour", icon: "/nav-icon/3.svg" },
-            ]
-            : [
-                { name: "تور های داخلی", url: "/#", icon: "/nav-icon/1.svg" },
-                { name: "تور های خارجی", url: "/#", icon: "/nav-icon/2.svg" },
-                { name: "وب لاگ", url: "/blogs", icon: "/nav-icon/3.svg" },
-                { name: "درباره ما", url: "/about-us", icon: "/nav-icon/4.svg" },
-            ];
+    const navItem = pathname.includes("/blogs")
+        ? [
+            { name: "خانه", url: "/blogs", icon: "/nav-icon/1.svg" },
+            { name: "ایران گردی", url: "/blogs/iran-tour", icon: "/nav-icon/2.svg" },
+            { name: "جهان گردی", url: "/blogs/iran-tour", icon: "/nav-icon/3.svg" },
+        ]
+        : [
+            { name: "تور های داخلی", url: "/#", icon: "/nav-icon/1.svg" },
+            { name: "تور های خارجی", url: "/#", icon: "/nav-icon/2.svg" },
+            { name: "وب لاگ", url: "/blogs", icon: "/nav-icon/3.svg" },
+            { name: "درباره ما", url: "/about-us", icon: "/nav-icon/4.svg" },
+        ];
 
     return (
         <nav className="flex flex-row-reverse items-center justify-between bg-[#f9f9f9] px-6 py-[7px] w-full fixed top-0 left-0 z-50 shadow-custom-soft">
             {menu && (
                 <div
-                    onClick={menuhandler} 
+                    onClick={menuhandler}
                     className="fixed top-0 left-0 w-screen h-screen bg-black opacity-50 z-40"
                 ></div>
             )}
 
+            {/* دکمه منو موبایل */}
             <button
                 onClick={menuhandler}
                 className="btn btn-square bg-zinc-300 z-50 md:hidden"
@@ -72,8 +76,13 @@ function Navbar() {
                     </svg>
                 )}
             </button>
+
+            {/* دکمه ورود / ثبت نام */}
             <div className="hidden md:block">
-                <button className="btn bg-[#5DAF6E] w-[154px] text-white flex flex-row-reverse items-center gap-2">
+                <button
+                    onClick={openModal}
+                    className="btn bg-[#5DAF6E] w-[154px] text-white flex flex-row-reverse items-center gap-2"
+                >
                     <div className="text-base font-xregular">ورود / ثبت نام</div>
                     <div>
                         <svg
@@ -93,6 +102,7 @@ function Navbar() {
                     </div>
                 </button>
             </div>
+
             <div className="flex items-center gap-7">
                 <Link href={"/"}>
                     <img src="/nav-icon/nav-logo.svg" alt="logo" />
@@ -117,6 +127,8 @@ function Navbar() {
                     </ul>
                 </div>
             </div>
+
+            {/* لیست منوی موبایل */}
             <div
                 className={`bg-white w-[320px] h-screen fixed top-0 right-0 z-50 transition-all duration-300 ease-in-out p-8 border flex flex-col gap-8 ${menu ? "translate-x-0" : "translate-x-full"
                     }`}
@@ -139,11 +151,6 @@ function Navbar() {
                         </svg>
                     </button>
                 </div>
-                <div className="flex items-center justify-center">
-                    <button className="btn bg-[#5DAF6E] text-white w-full">
-                        ورود / ثبت نام
-                    </button>
-                </div>
                 <ul className="flex flex-col gap-4">
                     {navItem.map((item, index) => (
                         <li key={index}>
@@ -158,6 +165,9 @@ function Navbar() {
                     ))}
                 </ul>
             </div>
+
+            {/* کامپوننت مودال */}
+            <LoginModal isOpen={isModalOpen} onClose={closeModal} />
         </nav>
     );
 }
