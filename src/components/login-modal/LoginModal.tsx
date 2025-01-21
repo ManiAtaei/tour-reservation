@@ -1,16 +1,19 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { PiInfo } from "react-icons/pi";
 
+interface IFormInput {
+  phone: string;
+}
 
-const LoginModal = ({ isOpen, onClose } : any) => {
+const LoginModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<IFormInput>();
 
-  const onSubmit = (data) => {
+  const onSubmit: SubmitHandler<IFormInput> = (data) => {
     console.log(data);
   };
 
@@ -27,7 +30,6 @@ const LoginModal = ({ isOpen, onClose } : any) => {
         >
           ✕
         </button>
-
 
         <div className="border-b-2 border-[#EFF7F0] pb-2">
           <h2 className="text-center text-xl font-xbold text-[#4A90E2] mb-4 ">
@@ -53,17 +55,13 @@ const LoginModal = ({ isOpen, onClose } : any) => {
                   : "border-gray-300 focus:border-orange-500"
                 }`}
             />
-
-
             {errors.phone && (
               <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>
             )}
           </div>
 
-
           <div className="flex gap-2">
             <PiInfo />
-
             <p className="text-xs font-xmedium text-right mb-4">
               استفاده از درنا به معنی پذیرش{" "}
               <a href="#" className="text-[#FF8C42] underline">
