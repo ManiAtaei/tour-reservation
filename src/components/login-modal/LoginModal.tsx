@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { PiInfo } from "react-icons/pi";
 
 
-const LoginModal = ({ isOpen, onClose }) => {
+const LoginModal = ({ isOpen, onClose } : any) => {
   const {
     register,
     handleSubmit,
