@@ -1,29 +1,77 @@
-import React from "react";
-import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
+import React, { useState, useEffect } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { PiInfo } from "react-icons/pi";
 
 interface IFormInput {
   phone: string;
+  verificationCode: string;
 }
 
 const LoginModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+  const [currentStep, setCurrentStep] = useState(1);
+  const [verificationCode, setVerificationCode] = useState(["", "", "", ""]);
+  const [timer, setTimer] = useState(120); 
+  const [isTimerRunning, setIsTimerRunning] = useState(false);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInput>();
 
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+
+    if (isTimerRunning && timer > 0) {
+      interval = setInterval(() => {
+        setTimer((prev) => prev - 1);
+      }, 1000);
+    } else if (timer === 0) {
+      clearInterval(interval);
+    }
+
+    return () => clearInterval(interval);
+  }, [isTimerRunning, timer]);
+
+  const handleCodeChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
+    const newCode = [...verificationCode];
+    newCode[index] = e.target.value;
+    setVerificationCode(newCode);
+
+    if (e.target.value && index < 3) {
+      const nextInput = document.getElementById(`code-${index + 1}`) as HTMLInputElement;
+      nextInput?.focus();
+    }
+  };
+
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     console.log(data);
+
+    if (currentStep === 1) {
+      setCurrentStep(2); 
+      setIsTimerRunning(true);
+    } else if (currentStep === 2) {
+      onClose(); 
+    }
+  };
+
+  const handleEditPhone = () => {
+    setCurrentStep(1); 
+    setTimer(120); 
+    setIsTimerRunning(false); 
+  };
+
+  const handleResendCode = () => {
+    setTimer(120);
+    setIsTimerRunning(true);
+   
   };
 
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg px-10 py-10 w-[462px] h-[400px] shadow-lg relative flex flex-col 
-      justify-center">
-
+      <div className="bg-white rounded-lg px-10 py-10 w-[462px] h-[400px] shadow-lg relative flex flex-col justify-center">
         <button
           onClick={onClose}
           className="absolute top-2 left-2 text-red-500 text-2xl font-bold"
@@ -33,51 +81,111 @@ const LoginModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
 
         <div className="border-b-2 border-[#EFF7F0] pb-2">
           <h2 className="text-center text-xl font-xbold text-[#4A90E2] mb-4 ">
-            ورود یا ثبت نام
+            {currentStep === 1 ? "ورود یا ثبت نام" : "تایید کد پیامکی"}
           </h2>
         </div>
 
         <form className="px-14 mt-10 flex flex-col justify-around" onSubmit={handleSubmit(onSubmit)}>
-          <div className="mb-4">
-            <input
-              type="text"
-              id="phone"
-              placeholder="شماره موبایل"
-              {...register("phone", {
-                required: "شماره موبایل الزامی است",
-                pattern: {
-                  value: /^09\d{9}$/,
-                  message: "شماره موبایل معتبر وارد کنید",
-                },
-              })}
-              className={`w-full px-4 py-2 border rounded-md transition-all ${errors.phone
-                  ? "border-red-500"
-                  : "border-gray-300 focus:border-orange-500"
-                }`}
-            />
-            {errors.phone && (
-              <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>
-            )}
-          </div>
+          {currentStep === 1 && (
+            <>
+              <div className="mb-4">
+                <input
+                  type="text"
+                  id="phone"
+                  placeholder="شماره موبایل"
+                  {...register("phone", {
+                    required: "شماره موبایل الزامی است",
+                    pattern: {
+                      value: /^09\d{9}$/,
+                      message: "شماره موبایل معتبر وارد کنید",
+                    },
+                  })}
+                  className={`w-full px-4 py-2 border rounded-md transition-all ${errors.phone
+                    ? "border-red-500"
+                    : "border-gray-300 focus:border-orange-500"
+                    }`}
+                />
+                {errors.phone && (
+                  <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>
+                )}
+              </div>
 
-          <div className="flex gap-2">
-            <PiInfo />
-            <p className="text-xs font-xmedium text-right mb-4">
-              استفاده از درنا به معنی پذیرش{" "}
-              <a href="#" className="text-[#FF8C42] underline">
-                قوانین و مقررات
-              </a>{" "}
-              این سرویس است.
-            </p>
-          </div>
+              <div className="flex gap-2">
+                <PiInfo />
+                <p className="text-xs font-xmedium text-right mb-4">
+                  استفاده از درنا به معنی پذیرش{" "}
+                  <a href="#" className="text-[#FF8C42] underline">
+                    قوانین و مقررات
+                  </a>{" "}
+                  این سرویس است.
+                </p>
+              </div>
 
-          <button
-            type="submit"
-            className="w-full bg-[#5DAF6EA8]/70 text-white py-2 px-4 rounded-md hover:bg-green-600 
-            text-sm font-xbold"
-          >
-            تایید و دریافت کد
-          </button>
+              <button
+                type="submit"
+                className="w-full bg-[#5DAF6EA8]/70 text-white py-2 px-4 rounded-md hover:bg-green-600 text-sm font-xbold"
+              >
+                تایید و دریافت کد
+              </button>
+            </>
+          )}
+
+          {currentStep === 2 && (
+            <div className="flex flex-col items-center justify-center">
+
+              <p className="text-center text-base font-xregular mb-4">کد ۴ رقمی برای شما ارسال شد.</p>
+
+              <button
+                type="button"
+                onClick={handleEditPhone}
+                className="text-blue-500 text-sm mb-4"
+              >
+                اصلاح شماره تلفن
+              </button>
+
+              <div className="flex gap-2">
+                {verificationCode.map((digit, index) => (
+                  <input
+                    key={index}
+                    type="text"
+                    id={`code-${index}`}
+                    value={digit}
+                    onChange={(e) => handleCodeChange(e, index)}
+                    maxLength={1}
+                    className={`w-1/4 px-4 py-2 border rounded-md text-center text-left dir-ltr transition-all ${errors.verificationCode
+                        ? "border-red-500"
+                        : "border-gray-300 focus:border-orange-500"
+                      }`}
+                    placeholder="-"
+                  />
+                ))}
+              </div>
+
+
+              <p className="text-sm mt-4">{`ارسال مجدد کد بعد از ${Math.floor(timer / 60)}:${timer % 60}`}</p>
+
+              {timer === 0 && (
+                <button
+                  type="button"
+                  onClick={handleResendCode}
+                  className="w-full bg-[#5DAF6EA8]/70 text-white py-2 px-4 rounded-md hover:bg-green-600 text-sm font-xbold mt-2"
+                >
+                  ارسال مجدد کد
+                </button>
+              )}
+
+              {errors.verificationCode && (
+                <p className="text-red-500 text-sm mt-1">کد تایید معتبر وارد کنید</p>
+              )}
+
+              <button
+                type="submit"
+                className="w-full bg-[#5DAF6EA8]/70 text-white py-2 px-4 rounded-md hover:bg-green-600 text-sm font-xbold mt-4"
+              >
+                تایید کد
+              </button>
+            </div>
+          )}
 
           <div className="mt-4 text-center">
             <a href="#" className="text-blue-500 text-sm font-xbold">
