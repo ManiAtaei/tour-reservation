@@ -4,14 +4,19 @@ import { PiInfo } from "react-icons/pi";
 
 interface IFormInput {
   phone: string;
-  verificationCode: string;
+  verificationCode?: string; // Optional as it's only relevant for step 2
 }
 
-const LoginModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
-  const [currentStep, setCurrentStep] = useState(1);
-  const [verificationCode, setVerificationCode] = useState(["", "", "", ""]);
-  const [timer, setTimer] = useState(120); 
-  const [isTimerRunning, setIsTimerRunning] = useState(false);
+interface LoginModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
+  const [currentStep, setCurrentStep] = useState<1 | 2>(1);
+  const [verificationCode, setVerificationCode] = useState<string[]>(["", "", "", ""]);
+  const [timer, setTimer] = useState<number>(120);
+  const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
 
   const {
     register,
@@ -48,23 +53,22 @@ const LoginModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
     console.log(data);
 
     if (currentStep === 1) {
-      setCurrentStep(2); 
+      setCurrentStep(2);
       setIsTimerRunning(true);
     } else if (currentStep === 2) {
-      onClose(); 
+      onClose();
     }
   };
 
   const handleEditPhone = () => {
-    setCurrentStep(1); 
-    setTimer(120); 
-    setIsTimerRunning(false); 
+    setCurrentStep(1);
+    setTimer(120);
+    setIsTimerRunning(false);
   };
 
   const handleResendCode = () => {
     setTimer(120);
     setIsTimerRunning(true);
-   
   };
 
   if (!isOpen) return null;
@@ -132,7 +136,6 @@ const LoginModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
 
           {currentStep === 2 && (
             <div className="flex flex-col items-center justify-center">
-
               <p className="text-center text-base font-xregular mb-4">کد ۴ رقمی برای شما ارسال شد.</p>
 
               <button
@@ -160,7 +163,6 @@ const LoginModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
                   />
                 ))}
               </div>
-
 
               <p className="text-sm mt-4">{`ارسال مجدد کد بعد از ${Math.floor(timer / 60)}:${timer % 60}`}</p>
 
