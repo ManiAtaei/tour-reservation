@@ -4,7 +4,7 @@ import { PiInfo } from "react-icons/pi";
 
 interface IFormInput {
   phone: string;
-  verificationCode?: string; // Optional as it's only relevant for step 2
+  verificationCode?: string;
 }
 
 interface LoginModalProps {
@@ -25,17 +25,23 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
   } = useForm<IFormInput>();
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: NodeJS.Timeout | undefined;
 
     if (isTimerRunning && timer > 0) {
       interval = setInterval(() => {
         setTimer((prev) => prev - 1);
       }, 1000);
-    } else if (timer === 0) {
+    }
+
+    if (timer === 0 && interval) {
       clearInterval(interval);
     }
 
-    return () => clearInterval(interval);
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
   }, [isTimerRunning, timer]);
 
   const handleCodeChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
@@ -84,7 +90,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
         </button>
 
         <div className="border-b-2 border-[#EFF7F0] pb-2">
-          <h2 className="text-center text-xl font-xbold text-[#4A90E2] mb-4 ">
+          <h2 className="text-center text-xl font-xbold text-[#4A90E2] mb-4">
             {currentStep === 1 ? "ورود یا ثبت نام" : "تایید کد پیامکی"}
           </h2>
         </div>
@@ -155,7 +161,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                     value={digit}
                     onChange={(e) => handleCodeChange(e, index)}
                     maxLength={1}
-                    className={`w-1/4 px-4 py-2 border rounded-md text-center text-left dir-ltr transition-all ${errors.verificationCode
+                    className={`w-1/4 px-4 py-2 border rounded-md text-center transition-all ${errors.verificationCode
                         ? "border-red-500"
                         : "border-gray-300 focus:border-orange-500"
                       }`}
@@ -174,10 +180,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                 >
                   ارسال مجدد کد
                 </button>
-              )}
-
-              {errors.verificationCode && (
-                <p className="text-red-500 text-sm mt-1">کد تایید معتبر وارد کنید</p>
               )}
 
               <button
