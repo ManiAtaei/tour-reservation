@@ -5,6 +5,7 @@
   import PictureSlide from "@/components/PictureSlide";
   import Questions from "@/components/Questions";
   import TourCart from "@/components/TourCart";
+import WhyCart from "@/components/why-dorna/WhyCart";
 
   export default function Home() {
     return (
@@ -13,6 +14,8 @@
           <PictureSlide />
           <div className="w-full mt-8">
             <img className="w-full rounded-xl" src="/banner/dorna.png" alt="why ? dorna !" />
+
+            {/* <WhyCart/> */}
           </div>
           <Container>
             <TourCart />

@@ -166,7 +166,7 @@ function Navbar() {
                 </ul>
             </div>
 
-            {/* کامپوننت مودال */}
+            
             <LoginModal isOpen={isModalOpen} onClose={closeModal} />
         </nav>
     );

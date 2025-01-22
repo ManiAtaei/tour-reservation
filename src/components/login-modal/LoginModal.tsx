@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { PiInfo } from "react-icons/pi";
@@ -5,6 +6,7 @@ import { PiInfo } from "react-icons/pi";
 interface IFormInput {
   phone: string;
   verificationCode?: string;
+  password?: string;
 }
 
 interface LoginModalProps {
@@ -13,7 +15,7 @@ interface LoginModalProps {
 }
 
 const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
-  const [currentStep, setCurrentStep] = useState<1 | 2>(1);
+  const [currentStep, setCurrentStep] = useState<1 | 2 | 3>(1); 
   const [verificationCode, setVerificationCode] = useState<string[]>(["", "", "", ""]);
   const [timer, setTimer] = useState<number>(120);
   const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
@@ -56,13 +58,13 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
   };
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log(data);
-
     if (currentStep === 1) {
-      setCurrentStep(2);
+      setCurrentStep(2); 
       setIsTimerRunning(true);
     } else if (currentStep === 2) {
-      onClose();
+      setCurrentStep(3); 
+    } else if (currentStep === 3) {
+      onClose(); 
     }
   };
 
@@ -91,7 +93,11 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
         <div className="border-b-2 border-[#EFF7F0] pb-2">
           <h2 className="text-center text-xl font-xbold text-[#4A90E2] mb-4">
-            {currentStep === 1 ? "ورود یا ثبت نام" : "تایید کد پیامکی"}
+            {currentStep === 1
+              ? "ورود یا ثبت نام"
+              : currentStep === 2
+              ? "تایید کد پیامکی"
+              : "کلمه عبور انتخاب کنید"}
           </h2>
         </div>
 
@@ -110,10 +116,11 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                       message: "شماره موبایل معتبر وارد کنید",
                     },
                   })}
-                  className={`w-full px-4 py-2 border rounded-md transition-all ${errors.phone
-                    ? "border-red-500"
-                    : "border-gray-300 focus:border-orange-500"
-                    }`}
+                  className={`w-full px-4 py-2 border rounded-md transition-all ${
+                    errors.phone
+                      ? "border-red-500"
+                      : "border-gray-300 focus:border-orange-500"
+                  }`}
                 />
                 {errors.phone && (
                   <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>
@@ -124,9 +131,9 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                 <PiInfo />
                 <p className="text-xs font-xmedium text-right mb-4">
                   استفاده از درنا به معنی پذیرش{" "}
-                  <a href="#" className="text-[#FF8C42] underline">
+                  <Link href={'/laws'} className="text-[#FF8C42] underline">
                     قوانین و مقررات
-                  </a>{" "}
+                  </Link>{" "}
                   این سرویس است.
                 </p>
               </div>
@@ -147,7 +154,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
               <button
                 type="button"
                 onClick={handleEditPhone}
-                className="text-blue-500 text-sm mb-4"
+                className="text-blue-500 text-sm mb-4 font-xmedium"
               >
                 اصلاح شماره تلفن
               </button>
@@ -161,10 +168,11 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                     value={digit}
                     onChange={(e) => handleCodeChange(e, index)}
                     maxLength={1}
-                    className={`w-1/4 px-4 py-2 border rounded-md text-center transition-all ${errors.verificationCode
+                    className={`w-1/4 px-4 py-2 border rounded-md text-center transition-all ${
+                      errors.verificationCode
                         ? "border-red-500"
                         : "border-gray-300 focus:border-orange-500"
-                      }`}
+                    }`}
                     placeholder="-"
                   />
                 ))}
@@ -191,11 +199,43 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             </div>
           )}
 
-          <div className="mt-4 text-center">
-            <a href="#" className="text-blue-500 text-sm font-xbold">
-              ورود با کلمه عبور
-            </a>
-          </div>
+          {currentStep === 3 && (
+            <div className="flex flex-col items-center justify-center">
+              <p className="text-center text-base font-xregular mb-4">
+                برای حساب کاربری خود کلمه عبور انتخاب کنید.
+              </p>
+
+              <div className="mb-4 w-full">
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="رمز کاربری"
+                  {...register("password", {
+                    required: "کلمه عبور الزامی است",
+                    minLength: {
+                      value: 6,
+                      message: "کلمه عبور باید حداقل ۶ کاراکتر باشد",
+                    },
+                  })}
+                  className={`w-full px-4 py-2 border rounded-md transition-all ${
+                    errors.password
+                      ? "border-red-500"
+                      : "border-gray-300 focus:border-orange-500"
+                  }`}
+                />
+                {errors.password && (
+                  <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
+                )}
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-[#5DAF6EA8]/70 text-white py-2 px-4 rounded-md hover:bg-green-600 text-sm font-xbold"
+              >
+                ثبت نام در درنا
+              </button>
+            </div>
+          )}
         </form>
       </div>
     </div>
