@@ -1,6 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from 'react';
 import { Plus, Edit2 } from 'lucide-react';
-import ToursModal from './toursmodal/ToursModal'; 
+import ToursModal from '@/components/panel-component/admin/toursmodal/ToursModal'
+import ToursModalAdd from '@/components/panel-component/admin/toursmodal/ToursModalAdd'
+
+interface Tour {
+  id: number;
+  name: string;
+}
 
 const tours = [
   {
@@ -13,20 +20,26 @@ const tours = [
     reservations: 60,
     price: '۲۰,۰۰۰,۰۰۰',
   },
-  
+ 
 ];
 
 function Tours() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedTour, setSelectedTour] = useState(null);
+  const [isAddModalOpen, setIsAddModalOpen] = useState<boolean>(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
+  const [selectedTour, setSelectedTour] = useState<Tour | null>(null);
 
-  const openModal = (tour = null) => {
-    setSelectedTour(tour);
-    setIsModalOpen(true);
+  const openAddModal = () => {
+    setIsAddModalOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const openEditModal = (tour: Tour) => {
+    setSelectedTour(tour);
+    setIsEditModalOpen(true);
+  };
+
+  const closeModals = () => {
+    setIsAddModalOpen(false);
+    setIsEditModalOpen(false);
     setSelectedTour(null);
   };
 
@@ -48,7 +61,7 @@ function Tours() {
             </div>
             <button
               className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
-              onClick={() => openModal()}
+              onClick={openAddModal}
             >
               <Plus className="w-5 h-5" />
               <span>افزودن تور</span>
@@ -123,7 +136,7 @@ function Tours() {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <button
                           className="text-blue-500 hover:text-blue-600"
-                          onClick={() => openModal(tour )}
+                          onClick={() => openEditModal(tour)}
                         >
                           <Edit2 className="w-5 h-5" />
                         </button>
@@ -131,7 +144,7 @@ function Tours() {
                     </tr>
                   ))}
                 </tbody>
-              </table>  
+              </table>
             </div>
 
             <div className="px-6 py-4 border-t">
@@ -151,11 +164,18 @@ function Tours() {
         </div>
       </div>
 
-      {/* Render the modal if isModalOpen is true */}
-      {isModalOpen && (
-        <ToursModal isOpen={isModalOpen} onClose={closeModal} />
+      {isAddModalOpen && (
+        <ToursModalAdd isOpen={isAddModalOpen} onClose={closeModals} />
       )}
-    </div>
+
+      {isEditModalOpen && selectedTour && (
+        <ToursModal
+          isOpen={isEditModalOpen}
+          onClose={closeModals}
+          selectedTour={selectedTour}
+        />
+      )}
+    </div >
   );
 }
 
