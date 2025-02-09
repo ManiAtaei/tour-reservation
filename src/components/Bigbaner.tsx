@@ -13,7 +13,7 @@ function Bigbaner() {
                 </p>
 
 
-                <button className='btn bg-[#5DAF6E] text-white border-none text-sm font-xbold w-1/2 py-2 rounded-lg mt-8'>
+                <button className='btn bg-[#5DAF6E] text-white border-none text-sm font-xbold w-1/2 py-2 rounded-lg mt-8 hover:bg-[#478955] transition-all duration-300'>
                     مشاهده مقاله
                 </button>
 

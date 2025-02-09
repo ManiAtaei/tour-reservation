@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import LoginModal from "@/components/login-modal/LoginModal";
+import Image from "next/image";
 
 function Navbar() {
     const [menu, setMenu] = useState(false);
@@ -39,7 +40,6 @@ function Navbar() {
                 ></div>
             )}
 
-            {/* دکمه منو موبایل */}
             <button
                 onClick={menuhandler}
                 className="btn btn-square bg-zinc-300 z-50 md:hidden"
@@ -77,11 +77,10 @@ function Navbar() {
                 )}
             </button>
 
-            {/* دکمه ورود / ثبت نام */}
             <div className="hidden md:block">
                 <button
                     onClick={openModal}
-                    className="btn bg-[#5DAF6E] w-[154px] text-white flex flex-row-reverse items-center gap-2"
+                    className="btn bg-[#5DAF6E] w-[154px] text-white flex flex-row-reverse items-center gap-2 hover:bg-[#50965e]"
                 >
                     <div className="text-base font-xregular">ورود / ثبت نام</div>
                     <div>
@@ -105,7 +104,7 @@ function Navbar() {
 
             <div className="flex items-center gap-7">
                 <Link href={"/"}>
-                    <img src="/nav-icon/nav-logo.svg" alt="logo" />
+                    <Image src="/nav-icon/nav-logo.svg" alt="logo" width={100} height={40} />
                 </Link>
                 <div className="hidden md:flex gap-4 p-2 text-black">
                     <ul className="flex items-center justify-center gap-4">
@@ -116,15 +115,17 @@ function Navbar() {
                                     className="flex flex-row-reverse gap-3 items-center hover:text-green-500 hover:underline"
                                 >
                                     {item.name}
-                                    <img
+                                    <Image
                                         src={item.icon}
-                                        className="w-6 h-6 hidden lg:block"
-                                        alt=""
+                                        className="w-6 h-6 hidden lg:block hover:text-green-500"
+                                        alt={`${item.name} icon`}
+                                        width={24}
+                                        height={24}
                                     />
                                 </Link>
                             </li>
                         ))}
-                    </ul>
+                    </ul>   
                 </div>
             </div>
 
@@ -159,7 +160,12 @@ function Navbar() {
                                 href={item.url}
                             >
                                 {item.name}
-                                <img src={item.icon} alt="icon" />
+                                <Image
+                                    src={item.icon}
+                                    alt={`${item.name} icon`}
+                                    width={24}
+                                    height={24}
+                                />
                             </Link>
                         </li>
                     ))}
