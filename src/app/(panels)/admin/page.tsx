@@ -20,13 +20,13 @@ import Users from "@/components/panel-component/admin/Users";
 import FinancialManagement from "@/components/panel-component/admin/FinancialManagement";
 
 const ComponentMap = {
-  Dashboard :  Dashbord,
-  Tours :  Tours,
-  BlogManagement :  BlogManagement,
-  CommentManagement :  CommentManagement,
-  Reservations :  Reservations,
-  Users :  Users,
-  FinancialManagement :  FinancialManagement,
+  Dashboard: Dashbord,
+  Tours: Tours,
+  BlogManagement: BlogManagement,
+  CommentManagement: CommentManagement,
+  Reservations: Reservations,
+  Users: Users,
+  FinancialManagement: FinancialManagement,
 
 };
 
@@ -50,7 +50,9 @@ export default function App() {
       <aside className="w-[207px] min-h-screen bg-white border-l">
         <div className="">
           <div className="flex items-center justify-center pt-4">
-            <Image src="/logo-main.svg" alt="logo" width={111} height={95} />
+            <Link href="/">
+              <Image src="/logo-main.svg" alt="logo" width={111} height={95} />
+            </Link>
           </div>
 
           <nav className="space-y-1 mt-2">
@@ -58,9 +60,8 @@ export default function App() {
               <div
                 key={item.component}
                 onClick={() => setActiveComponent(item.component)}
-                className={`flex items-center gap-3 px-4 py-4 transition-colors border-b-2 cursor-pointer ${
-                  activeComponent === item.component ? "text-[#5DAF6E] font-xbold text-lg" : ""
-                }`}
+                className={`flex items-center gap-3 px-4 py-4 transition-colors border-b-2 cursor-pointer ${activeComponent === item.component ? "text-[#5DAF6E] font-xbold text-lg" : ""
+                  }`}
               >
                 <span>{item.icon}</span>
                 <span className="text-base font-xmedium">{item.label}</span>
