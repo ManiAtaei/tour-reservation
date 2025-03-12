@@ -1,32 +1,49 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from 'react';
-import { Plus, Edit2 } from 'lucide-react';
-import ToursModal from '@/components/panel-component/admin/toursmodal/ToursModal'
-import ToursModalAdd from '@/components/panel-component/admin/toursmodal/ToursModalAdd'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Plus, Edit2 } from "lucide-react";
+import ToursModal from "@/components/panel-component/admin/toursmodal/ToursModal";
+import ToursModalAdd from "@/components/panel-component/admin/toursmodal/ToursModalAdd";
+import { MdKeyboardArrowRight } from "react-icons/md";
+import { MdKeyboardArrowLeft } from "react-icons/md";
 
+// Updated interface to match API response
 interface Tour {
-  id: number;
-  name: string;
+  status: boolean;
+  id: string;
+  title: string;
+  origin: number;
+  destination: number;
+  tripCategories: number;
+  departureDate: string;
+  returnDate: string;
+  capacity: number;
+  cost: number;
+  hotels: any[];
 }
-
-const tours = [
-  {
-    id: 1,
-    image: 'https://images.unsplash.com/photo-1513326738677-b964603b136d',
-    name: 'تور روسیه',
-    code: '65740',
-    category: 'تور گردشگری',
-    capacity: 100,
-    reservations: 60,
-    price: '۲۰,۰۰۰,۰۰۰',
-  },
- 
-];
 
 function Tours() {
   const [isAddModalOpen, setIsAddModalOpen] = useState<boolean>(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
   const [selectedTour, setSelectedTour] = useState<Tour | null>(null);
+  const [tours, setTours] = useState<Tour[]>([]); // State to hold API data
+
+  useEffect(() => {
+    const fetchTours = async () => {
+      try {
+        const response = await axios.get(
+          "https://109.230.200.230:2222/api/Tour"
+        );
+        console.log("API Response:", response.data);
+        setTours(response.data); // Set the API data to state
+      } catch (error) {
+        console.error("Error fetching tours:", error);
+        setTours([]); // Set empty array in case of error
+      }
+    };
+
+    fetchTours();
+  }, []);
 
   const openAddModal = () => {
     setIsAddModalOpen(true);
@@ -55,15 +72,15 @@ function Tours() {
         <div className="mx-auto">
           <div className="flex justify-between items-center mb-8">
             <div>
-              <h1 className="text-2xl font-bold text-gray-800 mb-2">
-                مدیریت تورها
-              </h1>
+              <select className="p-2 border rounded-md w-[262px]">
+                <option>تور</option>
+              </select>
             </div>
             <button
-              className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+              className="flex items-center gap-2 text-[#4A90E2] px-4 py-2 text-lg font-xbold"
               onClick={openAddModal}
             >
-              <Plus className="w-5 h-5" />
+              <Plus size={24} />
               <span>افزودن تور</span>
             </button>
           </div>
@@ -71,67 +88,54 @@ function Tours() {
           <div className="bg-white rounded-lg shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead>
-                  <tr className="bg-gray-50 text-right">
-                    <th className="px-6 py-3 text-xs font-medium text-gray-500">
-                      ردیف
-                    </th>
-                    <th className="px-6 py-3 text-xs font-medium text-gray-500">
-                      عکس
-                    </th>
-                    <th className="px-6 py-3 text-xs font-medium text-gray-500">
-                      نام تور
-                    </th>
-                    <th className="px-6 py-3 text-xs font-medium text-gray-500">
-                      کد تور
-                    </th>
-                    <th className="px-6 py-3 text-xs font-medium text-gray-500">
-                      دسته بندی
-                    </th>
-                    <th className="px-6 py-3 text-xs font-medium text-gray-500">
-                      ظرفیت
-                    </th>
-                    <th className="px-6 py-3 text-xs font-medium text-gray-500">
-                      تعداد رزرو
-                    </th>
-                    <th className="px-6 py-3 text-xs font-medium text-gray-500">
-                      قیمت
-                    </th>
-                    <th className="px-6 py-3 text-xs font-medium text-gray-500">
-                      ادیت
-                    </th>
+                <thead className="border-b-2">
+                  <tr className="bg-[#FFFFFF] text-right text-base font-xbold">
+                    <th className="px-6 py-3">ردیف</th>
+                    <th className="px-6 py-3">عکس</th>
+                    <th className="px-6 py-3">نام تور</th>
+                    <th className="px-6 py-3">کد تور</th>
+                    <th className="px-6 py-3">دسته بندی</th>
+                    <th className="px-6 py-3">ظرفیت</th>
+                    <th className="px-6 py-3">تعداد رزرو</th>
+                    <th className="px-6 py-3">قیمت</th>
+                    <th className="px-6 py-3">ادیت</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
-                  {tours.map((tour) => (
+                  {tours.map((tour, index) => (
                     <tr key={tour.id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {tour.id}
+                        {index + 1} {/* Using index + 1 for row number */}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <img
-                          src={tour.image}
-                          alt={tour.name}
+                          src="-" // No image in API
+                          alt={tour.title}
                           className="w-12 h-12 rounded-lg object-cover"
+                          onError={(e) => {
+                            e.currentTarget.src =
+                              "https://via.placeholder.com/48"; // Fallback image
+                          }}
                         />
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {tour.name}
+                        {tour.title}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {tour.code}
+                        {tour.id.split("-")[0]}{" "}
+                        {/* Using first part of UUID as code */}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {tour.category}
+                        {tour.tripCategories === 0 ? "-" : tour.tripCategories}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                         {tour.capacity}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {tour.reservations}
+                        - {/* No reservation data in API */}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {tour.price} تومان
+                        {tour.cost.toLocaleString()} تومان
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <button
@@ -148,14 +152,15 @@ function Tours() {
             </div>
 
             <div className="px-6 py-4 border-t">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-end gap-4">
                 <p className="text-sm text-gray-700">صفحه ۱ از ۱۰</p>
-                <div className="flex gap-2">
-                  <button className="px-3 py-1 text-sm bg-gray-100 rounded hover:bg-gray-200">
-                    قبلی
+                <div className="flex">
+                  <button className="px-3 py-1 text-sm border border-[#4A90E2] rounded-r-lg ">
+                    <MdKeyboardArrowRight size={20} fill="#4A90E2" />
                   </button>
-                  <button className="px-3 py-1 text-sm bg-blue-500 text-white rounded hover:bg-blue-600">
-                    بعدی
+
+                  <button className="px-3 py-1 text-sm border border-[#4A90E2]  rounded-l-lg">
+                    <MdKeyboardArrowLeft size={20} fill="#4A90E2" />
                   </button>
                 </div>
               </div>
@@ -175,7 +180,7 @@ function Tours() {
           selectedTour={selectedTour}
         />
       )}
-    </div >
+    </div>
   );
 }
 

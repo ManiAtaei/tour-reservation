@@ -1,31 +1,41 @@
-import React, { useState } from 'react';
-import { Eye, Edit, Plus } from 'lucide-react';
-import BlogModal from '@/components/panel-component/admin/blogsmodals/BlogModal'
+import React, { useState, useEffect } from "react";
+import { Eye, Edit, Plus } from "lucide-react";
+import BlogModal from "@/components/panel-component/admin/blogsmodals/BlogModal";
+import { MdKeyboardArrowRight } from "react-icons/md";
+import { MdKeyboardArrowLeft } from "react-icons/md";
+import axios from "axios";
 
 interface Destination {
-  id: number;
-  image: string;
+  id: string; // تغییر به string بر اساس نمونه خروجی API
   name: string;
-  code: string;
-  category: string;
-  visits: string;
+  context?: string | null; // اضافه کردن context که ممکن است null باشد
+  qas?: string | null; // اضافه کردن qas که ممکن است null باشد
+  image?: string; // اضافه کردن برای سازگاری با جدول
+  code?: string; // اضافه کردن برای سازگاری با جدول
+  category?: string; // اضافه کردن برای سازگاری با جدول
+  visits?: string; // اضافه کردن برای سازگاری با جدول
 }
-
-const destinations: Destination[] = [
-  {
-    id: 1,
-    image: "https://images.unsplash.com/photo-1590274853856-f22d5ee3d228",
-    name: "تخت جمشید",
-    code: "65740",
-    category: "ایران گردی",
-    visits: "2500"
-  },
-  // ... rest of the destinations array stays the same
-];
 
 export default function BlogManagement() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedDestination, setSelectedDestination] = useState<Destination | null>(null);
+  const [selectedDestination, setSelectedDestination] =
+    useState<Destination | null>(null);
+  const [destinations, setDestinations] = useState<Destination[]>([]); // state برای ذخیره داده‌های API
+
+  // فراخوانی API با axios
+  useEffect(() => {
+    axios
+      .get("https://109.230.200.230:2222/api/Admins/Blog")
+      .then((response) => {
+        console.log("پاسخ API:", response.data);
+        setDestinations(response.data); // ذخیره داده‌ها در state
+      })
+      .catch((error) => {
+        console.error("خطا در فراخوانی API:", error);
+        // در صورت خطا، داده‌های پیش‌فرض یا خالی می‌گذاریم
+        setDestinations([]);
+      });
+  }, []);
 
   const handleEdit = (destination: Destination) => {
     setSelectedDestination(destination);
@@ -39,74 +49,83 @@ export default function BlogManagement() {
 
   return (
     <>
-      <div className="bg-white rounded-lg shadow overflow-hidden">
-        <div className="p-4 flex justify-between items-center border-b">
-          <select className="p-2 border rounded-md">
+      <div className="pt-4 px-4 border-b border-[#E0E0E0]">
+        <h1 className="text-3xl font-xbold text-[#FF8C42] pb-4">
+          مدیریت وبلاگ ها
+        </h1>
+      </div>
+      <div className="rounded-lg overflow-hidden">
+        <div className="p-4 flex justify-between items-center">
+          <select className="p-2 border rounded-md w-[262px]">
             <option>وبلاگ</option>
           </select>
-          <button 
+          <button
             onClick={handleAdd}
-            className="bg-blue-500 text-white px-4 py-2 rounded-md flex items-center gap-2 hover:bg-blue-600"
+            className="flex items-center gap-2 text-[#4A90E2] px-4 py-2 text-lg font-xbold "
           >
             <Plus className="h-4 w-4" />
             افزودن مقاله
           </button>
         </div>
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200" dir="rtl">
-            <thead className="bg-gray-50">
+          <table className="min-w-full " dir="rtl">
+            <thead className="bg-gray-50 border-b">
               <tr>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-right text-base font-xbold">
                   ردیف
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-right text-base font-xbold">
                   عکس
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-right text-base font-xbold">
                   نام ویلاژ
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-right text-base font-xbold">
                   کد ویلاژ
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-right text-base font-xbold">
                   دسته بندی
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-right text-base font-xbold">
                   تعداد بازدید
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-right text-base font-xbold">
                   ادیت
                 </th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {destinations.map((destination) => (
+              {destinations.map((destination, index) => (
                 <tr key={destination.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {destination.id}
+                    {index + 1} {/* ردیف به صورت پویا از index */}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <img 
-                      src={destination.image} 
-                      alt={destination.name}
-                      className="h-10 w-14 object-cover rounded"
-                    />
+                    {destination.image ? (
+                      <img
+                        src={destination.image}
+                        alt={destination.name}
+                        className="h-10 w-14 object-cover rounded"
+                      />
+                    ) : (
+                      "-"
+                    )}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    {destination.name}
+                    {destination.name || "-"}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {destination.code}
+                    {destination.code || "-"}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {destination.category}
+                    {destination.category || "-"}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {destination.visits}
+                    {destination.visits || "-"}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     <div className="flex gap-2">
-                      <button 
+                      <button
                         onClick={() => handleEdit(destination)}
                         className="text-blue-500 hover:text-blue-700"
                       >
@@ -122,13 +141,17 @@ export default function BlogManagement() {
             </tbody>
           </table>
         </div>
-        <div className="px-4 py-3 border-t flex justify-between items-center">
-          <div className="text-sm text-gray-500">
-            صفحه ۱ از ۲۰
-          </div>
-          <div className="flex gap-2">
-            <button className="px-3 py-1 border rounded hover:bg-gray-50">&lt;</button>
-            <button className="px-3 py-1 border rounded hover:bg-gray-50">&gt;</button>
+        <div className="px-6 py-4 border-t">
+          <div className="flex items-center justify-end gap-4">
+            <p className="text-sm text-gray-700">صفحه ۱ از ۱۰</p>
+            <div className="flex">
+              <button className="px-3 py-1 text-sm border border-[#4A90E2] rounded-r-lg ">
+                <MdKeyboardArrowRight size={20} fill="#4A90E2" />
+              </button>
+              <button className="px-3 py-1 text-sm border border-[#4A90E2] rounded-l-lg">
+                <MdKeyboardArrowLeft size={20} fill="#4A90E2" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -136,12 +159,16 @@ export default function BlogManagement() {
       <BlogModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        initialData={selectedDestination ? {
-          name: selectedDestination.name,
-          code: selectedDestination.code,
-          description: '',
-          images: [selectedDestination.image]
-        } : undefined}
+        initialData={
+          selectedDestination
+            ? {
+                name: selectedDestination.name,
+                code: selectedDestination.code || "",
+                description: selectedDestination.context || "",
+                images: selectedDestination.image ? [selectedDestination.image] : [],
+              }
+            : undefined
+        }
       />
     </>
   );

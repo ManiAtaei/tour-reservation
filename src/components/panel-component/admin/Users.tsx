@@ -1,8 +1,10 @@
-"use client"
-import React, { useState } from 'react';
-import { Edit, Trash } from 'lucide-react';
+"use client";
+import React, { useState } from "react";
+import { Edit, Trash } from "lucide-react";
 // import UserModal from './UserModal';
-import UsersModal from './usersmodal/UsersModal';
+import UsersModal from "./usersmodal/UsersModal";
+import { MdKeyboardArrowRight } from "react-icons/md";
+import { MdKeyboardArrowLeft } from "react-icons/md";
 
 interface User {
   id: number;
@@ -16,19 +18,19 @@ interface User {
 const users: User[] = [
   {
     id: 1,
-    name: 'کاوه راد',
-    userId: '65740',
-    gender: 'مرد',
-    mobile: '09123456789',
-    email: 'kave.rad@gmail.com'
+    name: "کاوه راد",
+    userId: "65740",
+    gender: "مرد",
+    mobile: "09123456789",
+    email: "kave.rad@gmail.com",
   },
   {
     id: 2,
-    name: 'سارا نیا',
-    userId: '74740',
-    gender: 'زن',
-    mobile: '09125633333',
-    email: 'sara@gmail.com'
+    name: "سارا نیا",
+    userId: "74740",
+    gender: "زن",
+    mobile: "09125633333",
+    email: "sara@gmail.com",
   },
 ];
 
@@ -44,34 +46,32 @@ export default function Users() {
   return (
     <>
       <div className="pt-4 px-4 border-b border-[#E0E0E0]">
-        <h1 className="text-3xl font-xbold text-[#FF8C42] pb-4">
-          کاربران
-        </h1>
+        <h1 className="text-3xl font-xbold text-[#FF8C42] pb-4">کاربران</h1>
       </div>
-      <div className="bg-white rounded-lg shadow overflow-hidden mt-5">
+      <div className="bg-white rounded-lg  overflow-hidden mt-5">
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200" dir="rtl">
+          <table className="min-w-full" dir="rtl">
             <thead className="bg-gray-50">
-              <tr>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <tr className="border-b">
+                <th className="px-6 py-3 text-right font-xbold text-base ">
                   ردیف
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-right font-xbold text-base ">
                   نام کاربر
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-right font-xbold text-base ">
                   کد کاربر
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-right font-xbold text-base ">
                   جنسیت
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-right font-xbold text-base ">
                   شماره موبایل
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-right font-xbold text-base ">
                   ایمیل
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-right font-xbold text-base ">
                   ادیت
                 </th>
               </tr>
@@ -115,13 +115,18 @@ export default function Users() {
             </tbody>
           </table>
         </div>
-        <div className="px-4 py-3 border-t flex justify-between items-center">
-          <div className="text-sm text-gray-500">
-            صفحه ۱ از ۲۰
-          </div>
-          <div className="flex gap-2">
-            <button className="px-3 py-1 border rounded hover:bg-gray-50">&lt;</button>
-            <button className="px-3 py-1 border rounded hover:bg-gray-50">&gt;</button>
+        <div className="px-6 py-4 border-t">
+          <div className="flex items-center justify-end gap-4">
+            <p className="text-sm text-gray-700">صفحه ۱ از ۱۰</p>
+            <div className="flex">
+              <button className="px-3 py-1 text-sm border border-[#4A90E2] rounded-r-lg ">
+                <MdKeyboardArrowRight size={20} fill="#4A90E2" />
+              </button>
+
+              <button className="px-3 py-1 text-sm border border-[#4A90E2]  rounded-l-lg">
+                <MdKeyboardArrowLeft size={20} fill="#4A90E2" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
